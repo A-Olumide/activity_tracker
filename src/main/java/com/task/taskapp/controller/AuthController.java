@@ -18,6 +18,9 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody User user) {
+        if(!user.getEmail().contains("@")) {
+            return ResponseEntity.badRequest().body("Invalid Email Format");
+        }
         User registeredUser = userService.save(user);
         return ResponseEntity.ok(registeredUser);
 

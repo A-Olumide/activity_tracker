@@ -1,5 +1,6 @@
 package com.task.taskapp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.task.taskapp.enums.TaskStatus;
 import jakarta.persistence.*;
@@ -26,12 +27,15 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     public LocalDateTime createdAt;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     public LocalDateTime updatedAt;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     public LocalDateTime completedAt;
 }
